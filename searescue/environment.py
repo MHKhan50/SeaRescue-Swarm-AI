@@ -8,6 +8,7 @@ class Agent:
         self.y = y
         self.energy = 250
         self.active = True
+        self.known_victims = set()
 
 
 class RescueGrid:
@@ -55,4 +56,6 @@ class RescueGrid:
             agent.active = False
 
         if (agent.x, agent.y) in self.victims:
-            self.found.add((agent.x, agent.y))
+            location = (agent.x, agent.y)
+            self.found.add(location)
+            agent.known_victims.add(location)
